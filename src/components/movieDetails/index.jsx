@@ -100,6 +100,17 @@ const [drawerOpen, setDrawerOpen] = useState(false);
             Recommendations
           </Button>
         </li>
+
+        <li>
+          <Button
+            variant="contained"
+            component={Link}
+            to={`/movies/${movie.id}/similar`}
+            sx={{ ...chip }}
+          >
+            Similar
+          </Button>
+        </li>
       </Paper>
 
       <Fab
