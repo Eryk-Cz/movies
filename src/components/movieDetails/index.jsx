@@ -89,6 +89,17 @@ const [drawerOpen, setDrawerOpen] = useState(false);
             Cast
           </Button>
         </li>
+
+        <li>
+          <Button
+            variant="contained"
+            component={Link}
+            to={`/movies/${movie.id}/recommendations`}
+            sx={{ ...chip }}
+          >
+            Recommendations
+          </Button>
+        </li>
       </Paper>
 
       <Fab
