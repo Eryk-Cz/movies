@@ -9,6 +9,9 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
+//Assignment Addition
+import { Link } from "react-router"
+import Button from "@mui/material/Button";
 
 
 const root = {
@@ -75,6 +78,19 @@ const [drawerOpen, setDrawerOpen] = useState(false);
         ))}
       </Paper>
       
+      <Paper component="ul" sx={{ ...root }}>
+        <li>
+          <Button
+            variant="contained"
+            component={Link}
+            to={`/movies/${movie.id}/credits`}
+            sx={{ ...chip }}
+          >
+            Cast
+          </Button>
+        </li>
+      </Paper>
+
       <Fab
         color="secondary"
         variant="extended"
