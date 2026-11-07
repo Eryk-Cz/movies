@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import PageTemplate from "../components/templateMovieListPage";
 import Spinner from "../components/spinner";
 import { getNowPlayingMovies } from "../api/tmdb-api";
+import AddToPlaylistIcon from "../components/cardIcons/addToPlaylist";
 
 const NowPlayingPage = () => {
   const { data, error, isLoading, isError } = useQuery({
@@ -22,7 +23,7 @@ const NowPlayingPage = () => {
     <PageTemplate
       title="Now Playing"
       movies={data.results}
-      action={(movie) => <></>}
+      action={(movie) => <AddToPlaylistIcon movie={movie} />}
     />
   );
 };
