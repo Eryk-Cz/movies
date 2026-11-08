@@ -17,6 +17,8 @@ import CreditsPage from "./pages/creditsPage";
 import RecommendationsPage from "./pages/recommendationsPage";
 import SimilarPage from "./pages/similarPage";
 import PlaylistPage from "./pages/playlistPage";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,12 +30,24 @@ const queryClient = new QueryClient({
   },
 });
 
+//My Assignment Addition 
+const theme = createTheme({
+  palette: {
+    primary: { main: "#ff0101ef" },
+    secondary: { main: "#11ece1" },
+    background: { default: "#c3d172" },
+  },
+  shape: { borderRadius: 12 },
+});
+
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+      <CssBaseline/>
       <BrowserRouter>
-        <SiteHeader />
         <MoviesContextProvider>
+        <SiteHeader />
           <Routes>
             <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
             <Route path="/movies/upcoming" element={<UpcomingPage />} />
@@ -52,6 +66,7 @@ const App = () => {
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>
+      </ThemeProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
