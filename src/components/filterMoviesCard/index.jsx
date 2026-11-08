@@ -12,6 +12,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
+import Slider from "@mui/material/Slider";
 
 const formControl = 
   {
@@ -52,6 +53,10 @@ export default function FilterMoviesCard(props) {
     handleChange(e, "genre", e.target.value);
   };
 
+  const handleRatingChange = (e, value) => {
+  handleChange(e, "rating", value);
+};
+
   return (
     <Card 
       sx={{
@@ -59,6 +64,21 @@ export default function FilterMoviesCard(props) {
       }} 
       variant="outlined">
       <CardContent>
+        
+      <FormControl sx={{ ...formControl, p: 1.5 }}>
+          <Typography id="rating-label" gutterBottom>
+            Minimum rating: {props.ratingFilter ?? 0}
+          </Typography>
+          <Slider
+            aria-labelledby="rating-label"
+            value={props.ratingFilter ?? 0}
+            onChange={handleRatingChange}
+            min={0}
+            max={10}
+            step={0.5}
+          />
+        </FormControl>
+
         <Typography variant="h5" component="h1">
           <SearchIcon fontSize="large" />
           Filter the movies.
